@@ -1,0 +1,13 @@
+version: '3'
+services:
+  database:
+    image: mongo
+
+  back:
+    depends_on:
+    - database
+    build: .
+    ports:
+    - "5000:5000"
+    environment:
+      MONGOURI: "mongodb://database:27017/projects"
